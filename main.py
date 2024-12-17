@@ -1,8 +1,14 @@
 import streamlit as st
 
+@st.fragment
+def singlepage():
+    return st.Page("singlepage.py", title="Single Page")
+
+@st.fragment
+def tabbed():
+    return st.Page("tabs.py", title="Tabbed Interface")
 pages = st.navigation([
-    st.Page("singlepage.py", title="No Tabs"),
-    st.Page("tabs.py", title="3 Tabs")
-])
-    
+    singlepage(),
+    tabbed()])
+
 pages.run()
