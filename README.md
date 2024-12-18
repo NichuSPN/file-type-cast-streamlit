@@ -10,11 +10,13 @@ This project was created to experiment with features of Streamlit, including tab
 - **File Uploading**: Users can upload files in CSV, JSON, or XLSX formats.
 - **Data Editing**: After uploading, users can edit the data using a built-in data editor.
 - **Download Options**: Users can download the edited data in their preferred format (CSV or JSON).
+- **Multiple Interfaces**: The application supports both a single-page interface and a tabbed interface for better organization of functionalities.
 
 ## File Structure
 - `main.py`: The main entry point of the application that sets up navigation between different pages.
 - `singlepage.py`: A single-page application that allows file uploading, editing, and downloading without tabs.
 - `tabs.py`: A multi-tab application that organizes the functionalities into separate tabs for better user experience.
+- `jsonednconvert.py`: A page for converting between JSON and EDN formats.
 - `utils.py`: Contains utility functions for file handling and data processing.
 
 ## Installation
@@ -34,3 +36,4 @@ streamlit run main.py
 2. Edit the data as needed.
 3. Select the desired format for downloading the edited data.
 4. Click the download button to save the file.
+5. Use the JSON-EDN converter to convert between JSON and EDN formats if needed.
