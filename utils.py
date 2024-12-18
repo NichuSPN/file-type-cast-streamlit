@@ -1,6 +1,6 @@
 from datetime import datetime
 import pandas as pd
-import pathlib
+import pathlib, edn_format, json
 import streamlit as st
 
 def get_file_extension(filename):
@@ -40,3 +40,48 @@ def get_download_button(df, type):
             data=df.to_json(orient='records').encode("utf-8"),
             file_name=f"edited_data_{datetime.now():%Y-%m-%d_%H-%M-%S}.json"
         )
+
+def __get_json_key(key):
+    if isinstance(key, edn_format.Keyword):
+        return str(key)[1:]
+    return str(key)
+
+def __convert_to_json_serializable(obj):
+    if isinstance(obj, edn_format.ImmutableDict):
+        return {
+            __get_json_key(key): __convert_to_json_serializable(value) 
+            for key, value in obj.items()
+        }
+    elif isinstance(obj, edn_format.ImmutableList):
+        return [__convert_to_json_serializable(item) for item in obj]
+    elif isinstance(obj, edn_format.Keyword):
+        return str(obj)[1:]
+    elif isinstance(obj, edn_format.Symbol):
+        return str(obj)
+    else:
+        return obj
+    
+def ednToJSON(edn_string):
+    edn_obj = edn_format.loads(edn_string)
+    json_serialized = __convert_to_json_serializable(edn_obj)
+    return json.dumps(json_serialized, indent=4)
+    
+def __convert_to_edn(obj):
+    if isinstance(obj, dict):
+        return edn_format.ImmutableDict({
+            edn_format.Keyword(key): __convert_to_edn(value)
+            for key, value in obj.items()
+        })
+    elif isinstance(obj, list):
+        return edn_format.ImmutableList([__convert_to_edn(item) for item in obj])
+    elif isinstance(obj, str):
+        return obj
+    elif isinstance(obj, (int, float, bool)) or obj is None:
+        return obj
+    else:
+        raise TypeError(f"Unsupported type: {type(obj)}")
+
+def jsonToEdn(json_string):
+    json_obj = json.loads(json_string)
+    edn_formatted = __convert_to_edn(json_obj)
+    return edn_format.dumps(edn_formatted, indent=4)

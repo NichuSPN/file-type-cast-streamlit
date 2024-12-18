@@ -5,6 +5,7 @@ cachetools==5.5.0
 certifi==2024.12.14
 charset-normalizer==3.4.0
 click==8.1.7
+edn-format==0.7.5
 et_xmlfile==2.0.0
 gitdb==4.0.11
 GitPython==3.1.43
@@ -21,10 +22,12 @@ openpyxl==3.1.5
 packaging==24.2
 pandas==2.2.3
 pillow==11.0.0
+ply==3.11
 protobuf==5.29.1
 pyarrow==18.1.0
 pydeck==0.9.1
 Pygments==2.18.0
+pyRFC3339==2.0.1
 python-dateutil==2.9.0.post0
 pytz==2024.2
 referencing==0.35.1
