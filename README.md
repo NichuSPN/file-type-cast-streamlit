@@ -12,6 +12,7 @@ This project was created to experiment with features of Streamlit, including tab
 - `main.py`: The main entry point of the application that sets up navigation between different pages.
 - `singlepage.py`: A single-page application that allows file uploading, editing, and downloading without tabs.
 - `tabs.py`: A multi-tab application that organizes the functionalities into separate tabs for better user experience.
+- `utils.py`: Contains utility functions for file handling and data processing.
 
 ## Installation
 To run this project, ensure you have Python and Streamlit installed. You can install Streamlit using pip:
