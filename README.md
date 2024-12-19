@@ -1,7 +1,7 @@
 # Streamlit File Type Cast Project
 
 ## Public URL
-- Access the deployed application here - https://nichu-data-file-convert.streamlit.app/
+- Access the deployed application here - https://data-type-converter.streamlit.app/
 
 ## Overview
 This project was created to experiment with features of Streamlit, including tabs, file uploaders, and download buttons. It provides a user-friendly interface for uploading files in various formats (CSV, JSON, XLSX), editing the data, and downloading the modified data in the selected format.
